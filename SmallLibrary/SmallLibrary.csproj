@@ -42,8 +42,14 @@
   <ItemGroup>
     <Compile Include="EasyTask.cs" />
     <Compile Include="Interface\IEasyTask.cs" />
+    <Compile Include="Interface\INearestStrategy.cs" />
+    <Compile Include="IntExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strategy\BaseNearestStrategy.cs" />
+    <Compile Include="Strategy\NearestWithAggregate.cs" />
+    <Compile Include="Strategy\NearestWithSort.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

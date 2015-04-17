@@ -66,5 +66,15 @@ namespace UnitTests
 
             Assert.Throws<ArgumentNullException>(new TestDelegate(() => task.Reverse(s)));
         }
+
+        [Test]
+        public void NearestTo_TransmitArrayAndNumberThatNotEqualToAnyArrayItem_ReturnNearestInt()
+        {
+            int[] array = new int[] { 1, 4, 8, 20, 0, 2, 0, -1, 50 };
+
+            int nearest = task.NearestTo(array, 3);
+
+            Assert.That(nearest == 2 || nearest == 4);
+        }
     }
 }

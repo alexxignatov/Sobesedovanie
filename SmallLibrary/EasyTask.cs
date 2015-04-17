@@ -38,5 +38,29 @@ namespace SmallLibrary
                 }
             }
         }
+
+        public int NearestTo(int[] array, int number)
+        {
+            if(array == null)
+                throw new ArgumentNullException();
+            if (array.Length == 0)
+                throw new ArgumentException();
+
+            int nearest = 0;
+            int minDifference = Math.Abs(array[0] - number);
+
+            foreach (var item in array)
+            {
+                var currentDifference = Math.Abs(item - number);
+
+                if (currentDifference < minDifference)
+                {
+                    minDifference = currentDifference;
+                    nearest = item;
+                }
+            }
+
+            return nearest;
+        }
     }
 }
