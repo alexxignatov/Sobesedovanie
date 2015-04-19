@@ -39,28 +39,37 @@ namespace SmallLibrary
             }
         }
 
-        public int NearestTo(int[] array, int number)
+
+        public string[] MostPopular(string input, int count)
         {
-            if(array == null)
+            if (input == null)
                 throw new ArgumentNullException();
-            if (array.Length == 0)
+
+            string[] allWords = input.Split(' ');
+            if(allWords.Length <= 0)
                 throw new ArgumentException();
 
-            int nearest = 0;
-            int minDifference = Math.Abs(array[0] - number);
+            Dictionary<string, int> rating = new Dictionary<string, int>();
 
-            foreach (var item in array)
+            foreach (var word in allWords)
             {
-                var currentDifference = Math.Abs(item - number);
-
-                if (currentDifference < minDifference)
+                if(rating.ContainsKey(word))
+                    rating[word]++;
+                else
                 {
-                    minDifference = currentDifference;
-                    nearest = item;
+                    rating.Add(word, 1);
                 }
             }
 
-            return nearest;
+            return SortDescByValue(rating).Take(count).Select( v => v.Key).ToArray();
+        }
+
+        private List<KeyValuePair<string,int>> SortDescByValue(Dictionary<string, int> input)
+        {
+            var list = input.ToList();
+            list.Sort((first, next) => { return next.Value.CompareTo(first.Value); });
+
+            return list;
         }
     }
 }

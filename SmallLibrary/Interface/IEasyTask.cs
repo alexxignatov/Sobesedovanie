@@ -9,6 +9,6 @@ namespace SmallLibrary.Interface
     {
         string Reverse(string s);
         void Sort(int[] numbers);
-        int NearestTo(int[] array, int number);
+        string[] MostPopular(string input, int count);
     }
 }

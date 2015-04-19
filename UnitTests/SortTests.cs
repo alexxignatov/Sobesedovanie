@@ -68,13 +68,15 @@ namespace UnitTests
         }
 
         [Test]
-        public void NearestTo_TransmitArrayAndNumberThatNotEqualToAnyArrayItem_ReturnNearestInt()
+        public void MostPopular_ValidLongInputString_ReturnMostPopularWords()
         {
-            int[] array = new int[] { 1, 4, 8, 20, 0, 2, 0, -1, 50 };
+            string input = "i am i am me he she it then 1 2 3 3 3 3 3";
 
-            int nearest = task.NearestTo(array, 3);
+            string[] popular = task.MostPopular(input, 3);
 
-            Assert.That(nearest == 2 || nearest == 4);
+            Assert.That(popular.Any(v => v == "i"));
+            Assert.That(popular.Any(v => v == "3"));
+            Assert.That(popular.Any(v => v == "am"));
         }
     }
 }
